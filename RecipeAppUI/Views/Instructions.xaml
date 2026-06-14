@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RecipeAppUI.Views.Instructions"
+             Title="Instructions">
+    <VerticalStackLayout>
+        <Label 
+            Text="{Binding Recipe.Name}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="20"/>
+        <Label
+            Text="Instructions:" 
+            FontSize="18" />
+        <CollectionView ItemsSource="{Binding Recipe.Instructions}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding .}" 
+                        FontSize="15" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <BoxView HeightRequest="20" Color="Transparent" />
+        <Label 
+            Text="Utensils Required:"
+            FontSize="18" />
+        <CollectionView ItemsSource="{Binding Recipe.Utensils}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding Name}" 
+                FontSize="15" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <BoxView HeightRequest="20" Color="Transparent" />
+        <Label 
+            Text="Ingredients Required:"
+            FontSize="18" />
+        <CollectionView ItemsSource="{Binding Recipe.Ingredients}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding Name}" 
+                        FontSize="15" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

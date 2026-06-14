@@ -1,0 +1,23 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RecipeAppUI.Views.Recipes"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+
+    <ScrollView>
+        <VerticalStackLayout Margin="10,0,0,0">
+            <SearchBar Placeholder="Search recipes..." Text="{Binding SearchText}" Margin="0,10,10,10"/>
+            <CollectionView ItemsSource="{Binding FilteredRecipes}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout>
+                            <VerticalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding Id}" Tapped="OnRecipeClicked"/>
+                            </VerticalStackLayout.GestureRecognizers>
+                            <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" Margin="0,0,0,5"/>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
