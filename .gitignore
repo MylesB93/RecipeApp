@@ -5,3 +5,5 @@
 /.vs
 **/bin/
 **/obj/
+*.csproj.user
+RecipeAppAPI/uSync/v17/Content/

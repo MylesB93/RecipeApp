@@ -1,5 +1,7 @@
 <Solution>
   <Project Path="RecipeAppAPI/RecipeAppAPI.csproj" />
   <Project Path="RecipeAppUI.Core/RecipeAppUI.Core.csproj" />
-  <Project Path="RecipeAppUI/RecipeAppUI.csproj" />
+  <Project Path="RecipeAppUI/RecipeAppUI.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
 </Solution>

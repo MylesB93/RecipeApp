@@ -480,6 +480,3 @@ umbraco-package-schema.json
 
 # Media files
 /wwwroot/media/
-
-
-/usync/v15/Content
