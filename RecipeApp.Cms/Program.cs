@@ -1,4 +1,4 @@
-using RecipeAppApi.Middlewares;
+using RecipeApp.Cms.Middlewares;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 

@@ -1,4 +1,4 @@
-namespace RecipeAppApi.Middlewares;
+namespace RecipeApp.Cms.Middlewares;
 public class ApiKeyMiddleware
 {
     private readonly RequestDelegate _next;
