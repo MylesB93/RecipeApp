@@ -69,7 +69,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\RecipeAppUI.Core\RecipeAppUI.Core.csproj" />
+	  <ProjectReference Include="..\RecipeApp.Core\RecipeApp.Core.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

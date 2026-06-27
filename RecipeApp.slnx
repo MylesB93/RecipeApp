@@ -1,7 +1,7 @@
 <Solution>
   <Project Path="RecipeApp.Cms/RecipeApp.Cms.csproj" />
-  <Project Path="RecipeAppUI.Core/RecipeAppUI.Core.csproj" />
-  <Project Path="RecipeAppUI/RecipeAppUI.csproj">
+  <Project Path="RecipeApp.Core/RecipeApp.Core.csproj" />
+  <Project Path="RecipeApp.UI/RecipeApp.UI.csproj">
     <Deploy Solution="Debug|*" />
   </Project>
 </Solution>
