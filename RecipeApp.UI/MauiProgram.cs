@@ -13,9 +13,13 @@ namespace RecipeAppUI
 		{
 			var builder = MauiApp.CreateBuilder();
 
+			using var appSettingsStream = FileSystem.OpenAppPackageFileAsync("appsettings.json")
+				.GetAwaiter()
+				.GetResult();
+
 			var config = new ConfigurationBuilder()
-							.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-							.AddUserSecrets<App>()
+							.AddJsonStream(appSettingsStream)
+							.AddUserSecrets<App>(optional: true)
 							.Build();
 
 			var baseUrl = config["RecipeAPI:BaseUrl"] ?? throw new Exception("Base URL is missing from configuration.");

@@ -85,9 +85,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="appsettings.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
+	  <MauiAsset Include="appsettings.json" LogicalName="appsettings.json" />
 	</ItemGroup>
 
 </Project>
