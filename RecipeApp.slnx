@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="RecipeApp.Api/RecipeApp.Api.csproj" Id="0b74dc0d-8069-4390-b800-8e3e49adef31" />
   <Project Path="RecipeApp.Cms/RecipeApp.Cms.csproj" />
   <Project Path="RecipeApp.Core/RecipeApp.Core.csproj" />
   <Project Path="RecipeApp.UI/RecipeApp.UI.csproj">
