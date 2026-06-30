@@ -1,8 +1,13 @@
+using RecipeApp.Api.Interfaces;
+using RecipeApp.Api.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddScoped<IRecipeService, RecipeService>();
+
+builder.Services.AddHttpClient<IRecipeService, RecipeService>(c => c.BaseAddress = new System.Uri("https://localhost:44398/"));
 
 var app = builder.Build();
 
@@ -14,28 +19,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-	"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
 
-app.MapGet("/weatherforecast", () =>
+app.MapGet("/", async (RecipeService recipeService) =>
 {
-	var forecast = Enumerable.Range(1, 5).Select(index =>
-		new WeatherForecast
-		(
-			DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-			Random.Shared.Next(-20, 55),
-			summaries[Random.Shared.Next(summaries.Length)]
-		))
-		.ToArray();
-	return forecast;
+	var recipe = await recipeService.GetRecipe();
+	return recipe;
 })
-.WithName("GetWeatherForecast");
+.WithName("GetRecipe");
 
 app.Run();
-
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-	public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

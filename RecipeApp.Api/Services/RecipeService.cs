@@ -1,8 +1,9 @@
 ﻿using RecipeApp.Api.Models.DTOs;
+using RecipeApp.Api.Interfaces;
 
 namespace RecipeApp.Api.Services
 {
-	public class RecipeService
+	public class RecipeService : IRecipeService
 	{
 		private HttpClient _httpClient;
 
@@ -11,15 +12,15 @@ namespace RecipeApp.Api.Services
 			_httpClient = httpClient;
 		}
 
-		public RecipeDto GetRecipe()
+		public async Task<RecipeDto> GetRecipe()
 		{
-			_httpClient.BaseAddress = new Uri("https://api.example.com/recipes");
-			var response = _httpClient.GetAsync("/random").Result;
-			if (response.IsSuccessStatusCode)
-			{
-				var recipe = response.Content.ReadFromJsonAsync<RecipeDto>().Result;
-				return recipe;
-			}
+			//_httpClient.BaseAddress = new Uri("https://api.example.com/recipes");
+			//var response = _httpClient.GetAsync("/random").Result;
+			//if (response.IsSuccessStatusCode)
+			//{
+			//	var recipe = response.Content.ReadFromJsonAsync<RecipeDto>().Result;
+			//	return recipe;
+			//}
 			return null;
 		}
 	}
