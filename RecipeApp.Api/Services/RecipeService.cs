@@ -6,22 +6,25 @@ namespace RecipeApp.Api.Services
 	public class RecipeService : IRecipeService
 	{
 		private HttpClient _httpClient;
+		private readonly IConfiguration _configuration;
 
-		public RecipeService(HttpClient httpClient) 
+		public RecipeService(HttpClient httpClient, IConfiguration configuration) 
 		{ 
 			_httpClient = httpClient;
+			_configuration = configuration;
 		}
 
-		public async Task<RecipeDto> GetRecipe()
+		public async Task<RecipeDto> GetRecipeAsync()
 		{
-			//_httpClient.BaseAddress = new Uri("https://api.example.com/recipes");
-			//var response = _httpClient.GetAsync("/random").Result;
-			//if (response.IsSuccessStatusCode)
-			//{
-			//	var recipe = response.Content.ReadFromJsonAsync<RecipeDto>().Result;
-			//	return recipe;
-			//}
-			return null;
+			return await Task.FromException<RecipeDto>(new NotImplementedException());
+		}
+
+		public async Task<List<RecipeDto>> GetRecipesAsync()
+		{
+			_httpClient.DefaultRequestHeaders.Add("X-Api-Key", _configuration["Umbraco:CDA:ApiKey"]); // TODO: move this to httpClient configuration in Program.cs
+			var response = await _httpClient.GetAsync("/umbraco/delivery/api/v2/content?filter=contentType:recipe");
+
+			return new List<RecipeDto>();
 		}
 	}
 }

@@ -7,7 +7,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddScoped<IRecipeService, RecipeService>();
 
-builder.Services.AddHttpClient<IRecipeService, RecipeService>(c => c.BaseAddress = new System.Uri("https://localhost:44398/")); // move this to app settings
+builder.Services.AddHttpClient<IRecipeService, RecipeService>(c => c.BaseAddress = new System.Uri("https://localhost:44398/")); // TODO: move this to app settings
 
 var app = builder.Build();
 
@@ -20,9 +20,9 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 
-app.MapGet("/", async (RecipeService recipeService) =>
+app.MapGet("/recipes", async (RecipeService recipeService) =>
 {
-	var recipe = await recipeService.GetRecipe();
+	var recipe = await recipeService.GetRecipesAsync();
 	return recipe;
 })
 .WithName("GetRecipe");
