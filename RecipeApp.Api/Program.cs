@@ -7,7 +7,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddScoped<IRecipeService, RecipeService>();
 
-builder.Services.AddHttpClient<IRecipeService, RecipeService>(c => c.BaseAddress = new System.Uri("https://localhost:44398/"));
+builder.Services.AddHttpClient<IRecipeService, RecipeService>(c => c.BaseAddress = new System.Uri("https://localhost:44398/")); // move this to app settings
 
 var app = builder.Build();
 
