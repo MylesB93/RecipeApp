@@ -21,9 +21,8 @@ namespace RecipeApp.Api.Services
 
 		public async Task<List<RecipeDto>> GetRecipesAsync()
 		{
-			_httpClient.DefaultRequestHeaders.Add("X-Api-Key", _configuration["Umbraco:CDA:ApiKey"]); // TODO: move this to httpClient configuration in Program.cs
 			var response = await _httpClient.GetAsync("/umbraco/delivery/api/v2/content?filter=contentType:recipe");
-
+			
 			return new List<RecipeDto>();
 		}
 	}
