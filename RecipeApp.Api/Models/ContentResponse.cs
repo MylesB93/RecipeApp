@@ -1,19 +1,30 @@
-﻿public class Rootobject
+﻿using System.Text.Json.Serialization;
+
+public class Rootobject
 {
 	public int total { get; set; }
-	public Item[] items { get; set; }
+	[JsonPropertyName("items")]
+	public Item[] Items { get; set; }
 }
 
 public class Item
 {
-	public string contentType { get; set; }
-	public string name { get; set; }
-	public DateTime createDate { get; set; }
-	public DateTime updateDate { get; set; }
-	public Route route { get; set; }
-	public string id { get; set; }
-	public Properties properties { get; set; }
-	public Cultures cultures { get; set; }
+	[JsonPropertyName("contentType")]
+	public string ContentType { get; set; }
+	[JsonPropertyName("name")]
+	public string Name { get; set; }
+	[JsonPropertyName("createDate")]
+	public DateTime CreateDate { get; set; }
+	[JsonPropertyName("updateDate")]
+	public DateTime UpdateDate { get; set; }
+	[JsonPropertyName("route")]
+	public Route Route { get; set; }
+	[JsonPropertyName("id")]
+	public string Id { get; set; }
+	[JsonPropertyName("properties")]
+	public Properties Properties { get; set; }
+	[JsonPropertyName("cultures")]
+	public Cultures Cultures { get; set; }
 }
 
 public class Route

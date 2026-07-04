@@ -24,7 +24,12 @@ namespace RecipeApp.Api.Services
 			var response = await _httpClient.GetAsync("/umbraco/delivery/api/v2/content?filter=contentType:recipe");
 			var recipes = await response.Content.ReadFromJsonAsync<Rootobject>();
 
-			return new List<RecipeDto>();
+			var recipeDtos = recipes?.Items?.Select(item => new RecipeDto
+			{
+				Name = item.Name
+			}).ToList();
+
+			return recipeDtos ?? new List<RecipeDto>();
 		}
 	}
 }
