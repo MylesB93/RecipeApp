@@ -26,8 +26,14 @@ namespace RecipeApp.Api.Services
 
 			var recipeDtos = recipes?.Items?.Select(item => new RecipeDto
 			{
-				Name = item.Name
-			}).ToList();
+				Id = item.Id,
+				Name = item.Name,
+				Date = item.UpdateDate,
+				Ingredients = item.Properties.RecipeIngredients.Select(i => new IngredientDto
+				{
+					Name = i.Name
+				}).ToList()
+			}).OrderByDescending(r => r.Date).ToList();
 
 			return recipeDtos ?? new List<RecipeDto>();
 		}
