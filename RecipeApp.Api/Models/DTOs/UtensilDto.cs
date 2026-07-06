@@ -2,5 +2,6 @@
 {
 	public class UtensilDto
 	{
+		public required string Name { get; set; }
 	}
 }
