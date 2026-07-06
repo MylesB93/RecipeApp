@@ -22,7 +22,7 @@ namespace RecipeApp.Api.Services
 		public async Task<List<RecipeDto>> GetRecipesAsync()
 		{
 			var response = await _httpClient.GetAsync("/umbraco/delivery/api/v2/content?filter=contentType:recipe");
-			var recipes = await response.Content.ReadFromJsonAsync<Rootobject>();
+			var recipes = await response.Content.ReadFromJsonAsync<RootObject>();
 
 			var recipeDtos = recipes?.Items?.Select(item => new RecipeDto
 			{

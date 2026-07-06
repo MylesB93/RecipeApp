@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-public class Rootobject
+public class RootObject
 {
 	[JsonPropertyName("total")]
 	public int Total { get; set; }
@@ -23,14 +23,14 @@ public class Item
 public class Properties
 {
 	[JsonPropertyName("recipeIngredients")]
-	public Recipeingredient[] RecipeIngredients { get; set; }
+	public RecipeIngredient[] RecipeIngredients { get; set; }
 	[JsonPropertyName("recipeUtensils")]
-	public Recipeutensil[] RecipeUtensils { get; set; }
+	public RecipeUtensil[] RecipeUtensils { get; set; }
 	[JsonPropertyName("cookingInstructions")]
 	public string[] CookingInstructions { get; set; }
 }
 
-public class Recipeingredient // TODO: rename this class to pascal case
+public class RecipeIngredient
 {
 	[JsonPropertyName("contentType")]
 	public string ContentType { get; set; }
@@ -48,7 +48,7 @@ public class Properties1
 {
 }
 
-public class Recipeutensil
+public class RecipeUtensil
 {
 	[JsonPropertyName("contentType")]
 	public string ContentType { get; set; }
