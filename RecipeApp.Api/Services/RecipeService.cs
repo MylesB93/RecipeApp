@@ -14,8 +14,11 @@ namespace RecipeApp.Api.Services
 			_configuration = configuration;
 		}
 
-		public async Task<RecipeDto> GetRecipeAsync()
+		public async Task<RecipeDto> GetRecipeAsync(string id)
 		{
+			var response = await _httpClient.GetAsync($"/umbraco/delivery/api/v2/content/item/{id}");
+			var recipe = await response.Content.ReadFromJsonAsync<RootObject>();
+
 			return await Task.FromException<RecipeDto>(new NotImplementedException());
 		}
 

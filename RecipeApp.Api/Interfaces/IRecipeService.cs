@@ -4,7 +4,7 @@ namespace RecipeApp.Api.Interfaces
 {
 	public interface IRecipeService
 	{
-		Task<RecipeDto> GetRecipeAsync();
+		Task<RecipeDto> GetRecipeAsync(string id);
 		Task<List<RecipeDto>> GetRecipesAsync();
 	}
 }

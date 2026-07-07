@@ -37,4 +37,11 @@ app.MapGet("/recipes", async ([FromServices] IRecipeService recipeService) =>
 })
 .WithName("GetRecipe");
 
+app.MapGet("/recipe/{id}", async ([FromServices] IRecipeService recipeService, string id) =>
+{
+	var recipe = await recipeService.GetRecipeAsync(id);
+	return recipe;
+})
+.WithName("GetRecipeById");
+
 app.Run();
