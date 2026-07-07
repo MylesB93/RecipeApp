@@ -36,7 +36,8 @@ namespace RecipeApp.Api.Services
 				Utensils = item.Properties.RecipeUtensils.Select(u => new UtensilDto
 				{
 					Name = u.Name
-				}).ToList()
+				}).ToList(),
+				CookingInstructions = item.Properties.CookingInstructions.ToList()
 			}).OrderByDescending(r => r.Date).ToList();
 
 			return recipeDtos ?? new List<RecipeDto>();
