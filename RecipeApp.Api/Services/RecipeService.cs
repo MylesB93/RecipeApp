@@ -17,9 +17,25 @@ namespace RecipeApp.Api.Services
 		public async Task<RecipeDto> GetRecipeAsync(string id)
 		{
 			var response = await _httpClient.GetAsync($"/umbraco/delivery/api/v2/content/item/{id}");
-			var recipe = await response.Content.ReadFromJsonAsync<RootObject>();
+			var recipe = await response.Content.ReadFromJsonAsync<Item>();
 
-			return await Task.FromException<RecipeDto>(new NotImplementedException());
+			var recipeDto = recipe != null ? new RecipeDto
+			{
+				Id = recipe.Id,
+				Name = recipe.Name,
+				Date = recipe.UpdateDate,
+				Ingredients = recipe.Properties.RecipeIngredients.Select(i => new IngredientDto
+				{
+					Name = i.Name
+				}).ToList(),
+				Utensils = recipe.Properties.RecipeUtensils.Select(u => new UtensilDto
+				{
+					Name = u.Name
+				}).ToList(),
+				CookingInstructions = recipe.Properties.CookingInstructions.ToList()
+			} : null;
+
+			return recipeDto ?? new RecipeDto() { Name = "", Id = "" }; // TODO: better way of doing this?
 		}
 
 		public async Task<List<RecipeDto>> GetRecipesAsync()
