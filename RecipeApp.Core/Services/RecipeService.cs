@@ -17,7 +17,7 @@ namespace RecipeAppUI.Core.Services
 		public async Task<List<Recipe>> GetAllRecipesAsync()
 		{
 			var recipes = new List<Recipe>();
-			var response = await _httpClient.GetAsync("/umbraco/delivery/api/v2/content?filter=contentType:recipe");
+			var response = await _httpClient.GetAsync("/recipes");
 
 			if (response.IsSuccessStatusCode)
 			{
@@ -40,7 +40,7 @@ namespace RecipeAppUI.Core.Services
 
 		public async Task<Recipe> GetRecipeAsync(string id)
 		{
-			var response = await _httpClient.GetAsync($"/umbraco/delivery/api/v2/content/item/{id}");
+			var response = await _httpClient.GetAsync($"/recipe/{id}");
 			if (response.IsSuccessStatusCode)
 			{
 				var apiResult = await JsonHelper.DeserializeResponseAsync<Item>(response);
